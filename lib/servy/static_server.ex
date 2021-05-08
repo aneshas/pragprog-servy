@@ -3,7 +3,7 @@ defmodule Servy.StaticServer do
 
   import Servy.FileHandler
 
-  # "! Values for attributes are set at compile time"
+  # * Values for attributes are set at compile time"
   @pages_path Path.expand("../../pages", __DIR__)
 
   def serve_static_files(file, %Conv{} = conv) do

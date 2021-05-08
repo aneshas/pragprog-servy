@@ -1,7 +1,9 @@
 defmodule Servy.Router do
   alias Servy.Conv
+  alias Servy.Wildthings
 
   import Servy.StaticServer, only: [serve_static_files: 2]
+  import Servy.Template, only: [parse: 2]
 
   @doc """
   Static files are served first.
@@ -15,8 +17,11 @@ defmodule Servy.Router do
   def route(%Conv{method: :get, path: "/wildthings"} = conv),
     do: %{conv | status: 200, resp_body: "Bears, Lions, Tigers"}
 
-  def route(%Conv{method: :get, path: "/bears"} = conv),
-    do: %{conv | status: 200, resp_body: "Teddy, Smokey, Paddington"}
+  def route(%Conv{method: :get, path: "/bears"} = conv) do
+    bears = Wildthings.list_bears()
+
+    %{conv | status: 200, resp_body: parse("index", bears: bears)}
+  end
 
   def route(%Conv{method: :get, path: "/bears/" <> id} = conv),
     do: %{conv | status: 200, resp_body: "A bear with an id of #{id}"}

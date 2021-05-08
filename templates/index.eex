@@ -1,0 +1,7 @@
+<h1>All the bears</h1>
+
+<ul>
+  <%= for %Servy.Bear{name: name, type: type} <- bears do %>
+    <li><%= name %> - <%= type %></li>
+  <% end %>
+</ul>
