@@ -1,0 +1,1 @@
+Is <b><%= bear.name %></b> hibernating? <%= bear.hibernating %>

@@ -1,0 +1,9 @@
+<h1>Sensors</h1>
+
+<ul>
+  <%= for img <- snapshots do %>
+    <li>
+      <%= img %>
+    </li>
+  <% end %>
+</ul>
