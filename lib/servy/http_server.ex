@@ -1,8 +1,4 @@
 defmodule Servy.HttpServer do
-  def start_link(port) when is_integer(port) and port > 1023 do
-    spawn(fn -> start(port) end)
-  end
-
   def start(port) when is_integer(port) and port > 1023 do
     {:ok, lsock} = :gen_tcp.listen(port, [:binary, packet: :raw, active: false, reuseaddr: true])
 

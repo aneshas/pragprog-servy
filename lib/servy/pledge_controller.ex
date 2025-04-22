@@ -10,6 +10,6 @@ defmodule Servy.PledgeController do
   def index(conv) do
     pledges = PledgeServer.recent_pledges()
 
-    %{conv | status: 200, resp_body: inspect(pledges)}
+    %{conv | status: 200, resp_body: inspect(pledges.pledges)}
   end
 end
